@@ -29,7 +29,7 @@ namespace SuperheroCreator.Controllers
         // GET: Superheroes/Details/5
         public ActionResult Details(int id)
         {
-            var superheroDetails = _context.Superheroes.Find(id);
+            var superheroDetails = _context.Superheroes.Where(s => s.SuperheroId == id).FirstOrDefault();
             return View(superheroDetails);
         }
 
@@ -47,7 +47,7 @@ namespace SuperheroCreator.Controllers
         {
             try
             {
-                // TODO: Add insert logic here
+                // Add insert logic
                 _context.Superheroes.Add(Superhero);
                 _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
@@ -61,7 +61,8 @@ namespace SuperheroCreator.Controllers
         // GET: Superheroes/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var superheroToEdit = _context.Superheroes.Where(s => s.SuperheroId == id).FirstOrDefault();
+            return View(superheroToEdit);
         }
 
         // POST: Superheroes/Edit/5
@@ -72,7 +73,9 @@ namespace SuperheroCreator.Controllers
             try
             {
                 // TODO: Add update logic here
-
+                Superhero = null;
+                
+                _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
             catch
