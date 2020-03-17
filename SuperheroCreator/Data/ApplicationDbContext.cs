@@ -9,7 +9,7 @@ namespace SuperheroCreator.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {
-        DbSet<Superhero> superheroes { get; set; }
+        DbSet<Superhero> Superheroes { get; set; }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {

@@ -4,14 +4,24 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using SuperheroCreator.Data;
 
 namespace SuperheroCreator.Controllers
 {
     public class SuperheroesController : Controller
     {
+        ApplicationDbContext _context;
+        
+        public SuperheroesController(ApplicationDbContext context)
+        {
+            _context = context;
+        }
+
+
         // GET: Superheroes
         public ActionResult Index()
         {
+            //var superheroes = _context.Superh
             return View();
         }
 
